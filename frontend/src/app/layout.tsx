@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "../styles/globals.css";
 import { inter, roboto_mono } from '@/styles/fonts'
+import { Providers } from './providers'
 
 
 export const metadata: Metadata = {
@@ -18,7 +19,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${roboto_mono.variable} antialiased`}
       >
-        {children}
+        <Providers
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </Providers>
       </body>
     </html>
   );
