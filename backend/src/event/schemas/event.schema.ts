@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 
-enum EventCategory {
+export enum EventCategory {
   SORTIE_BAR = 'Sortie bar',
   RANDONNEE = 'Randonnée',
   FESTIVAL = 'Festival',
