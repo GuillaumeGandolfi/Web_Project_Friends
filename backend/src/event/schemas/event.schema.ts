@@ -1,6 +1,22 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 
+enum EventCategory {
+  SORTIE_BAR = 'Sortie bar',
+  RANDONNEE = 'Randonnée',
+  FESTIVAL = 'Festival',
+  CONCERT = 'Concert',
+  BRUNCH = 'Brunch',
+  JEUX_DE_SOCIETE = 'Jeux de société',
+  JEUX_VIDEO = 'Jeux vidéo',
+  SPORT = 'Sport',
+  CINEMA = 'Cinéma',
+  ESCAPE_GAME = 'Escape game',
+  SHOPPING = 'Shopping',
+  VISITE_CULTURELLE = 'Visite culturelle',
+  CAMPING = 'Camping',
+}
+
 @Schema()
 export class Event extends Document {
   @Prop({ required: true })
@@ -29,9 +45,9 @@ export class Event extends Document {
   @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }] })
   participants: Types.ObjectId[];
 
-  // Et ici, c'est une référence à la catégorie de l'événement
-  @Prop({ type: Types.ObjectId, ref: 'Category' })
-  categoryId: Types.ObjectId;
+  // Et ici, c'est une référence à la catégorie de l'événement (enum)
+  @Prop({ required: true, enum: EventCategory })
+  category: EventCategory;
 }
 
 export const EventSchema = SchemaFactory.createForClass(Event);
