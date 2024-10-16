@@ -2,19 +2,19 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 
 export enum EventCategory {
-  SORTIE_BAR = 'Sortie bar',
-  RANDONNEE = 'Randonnée',
-  FESTIVAL = 'Festival',
-  CONCERT = 'Concert',
-  BRUNCH = 'Brunch',
-  JEUX_DE_SOCIETE = 'Jeux de société',
-  JEUX_VIDEO = 'Jeux vidéo',
-  SPORT = 'Sport',
-  CINEMA = 'Cinéma',
-  ESCAPE_GAME = 'Escape game',
-  SHOPPING = 'Shopping',
-  VISITE_CULTURELLE = 'Visite culturelle',
-  CAMPING = 'Camping',
+  BAR_OUTING = 'bar_outing',
+  HIKING = 'hiking',
+  FESTIVAL = 'festival',
+  CONCERT = 'concert',
+  BRUNCH = 'brunch',
+  BOARD_GAMES = 'board_games',
+  VIDEO_GAMES = 'video_games',
+  SPORTS = 'sports',
+  CINEMA = 'cinema',
+  ESCAPE_GAME = 'escape_game',
+  SHOPPING = 'shopping',
+  CULTURAL_VISIT = 'cultural_visit',
+  CAMPING = 'camping',
 }
 
 @Schema()
@@ -30,6 +30,12 @@ export class Event extends Document {
 
   @Prop({ required: true })
   time: string;
+
+  @Prop()
+  latitude: number;
+
+  @Prop()
+  longitude: number;
 
   @Prop({ required: true })
   location: string;

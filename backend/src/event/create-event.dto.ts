@@ -1,4 +1,10 @@
-import { IsNotEmpty, IsEnum, IsOptional } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsEnum,
+  IsOptional,
+  IsDate,
+  IsMongoId,
+} from 'class-validator';
 import { EventCategory } from './schemas/event.schema';
 
 export class CreateEventDto {
@@ -8,7 +14,7 @@ export class CreateEventDto {
   @IsOptional()
   description?: string;
 
-  @IsNotEmpty()
+  @IsDate()
   date: Date;
 
   @IsNotEmpty()
@@ -18,9 +24,15 @@ export class CreateEventDto {
   location: string;
 
   @IsOptional()
+  latitude?: number;
+
+  @IsOptional()
+  longitude?: number;
+
+  @IsOptional()
   maxParticipants?: number;
 
-  @IsNotEmpty()
+  @IsMongoId()
   organizerId: string;
 
   @IsNotEmpty()
