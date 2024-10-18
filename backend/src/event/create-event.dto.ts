@@ -4,6 +4,8 @@ import {
   IsOptional,
   IsDate,
   IsMongoId,
+  Min,
+  Max,
 } from 'class-validator';
 import { EventCategory } from './schemas/event.schema';
 
@@ -30,6 +32,8 @@ export class CreateEventDto {
   longitude?: number;
 
   @IsOptional()
+  @Min(1)
+  @Max(1000)
   maxParticipants?: number;
 
   @IsMongoId()
